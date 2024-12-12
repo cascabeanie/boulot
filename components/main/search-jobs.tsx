@@ -1,7 +1,9 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState } from "react";
 import { SearchJobsAction } from "@/lib/search-jobs-action";
+
+import { CircleAlert } from "lucide-react";
 
 type stateType = {
   message?: string;
@@ -16,11 +18,6 @@ export default function SearchJobs() {
       error: null,
     }
   );
-
-  //dev: for testing:
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
 
   return (
     <>
@@ -49,7 +46,10 @@ export default function SearchJobs() {
         </div>
         <div>
           {state?.error && (
-            <p className="text-sm font-bold text-red-500">{state.error}</p>
+            <div className="flex items-center text-xl font-light text-red-500 gap-2">
+              <CircleAlert />
+              <p>{state.error}</p>
+            </div>
           )}
         </div>
       </form>

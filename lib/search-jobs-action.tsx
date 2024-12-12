@@ -11,8 +11,8 @@ export async function SearchJobsAction(
   prevState: stateType,
   formData: FormData
 ) {
-  let keywords;
-  let location;
+  let keywords: FormDataEntryValue | null;
+  let location: FormDataEntryValue | null;
 
   try {
     keywords = formData.get("keywords");
@@ -21,7 +21,7 @@ export async function SearchJobsAction(
     if (!keywords) {
       return {
         message: "Error",
-        error: "A search term is required",
+        error: "At least one job keyword is required",
       };
     }
   } catch (error) {
@@ -39,6 +39,5 @@ export async function SearchJobsAction(
     params.set("locationName", location.toString());
   }
 
-  //dev: change to /results when results component built
-  redirect(`/?${params.toString().toLowerCase()}`);
+  redirect(`/results?${params.toString()}`);
 }
