@@ -1,15 +1,16 @@
+import { z } from "zod";
+import { jobsSchema } from "@/lib/zod-schemas";
+import { SearchParamsType } from "@/lib/job-types";
+
 import DisplayJobs from "@/components/main/display-jobs";
 
-type queryParams = {
-  keywords: string;
-  locationName?: string;
-};
+type JobType = z.infer<typeof jobsSchema>;
 
-async function getJobs(userQuery: any) {
-  console.log(userQuery);
-
+async function getJobs(
+  userQuery: SearchParamsType
+): Promise<JobType | undefined> {
   try {
-    const params = new URLSearchParams(userQuery);
+    const params = new URLSearchParams(userQuery as Record<string, string>);
     const res = await fetch(
       `http://localhost:3000/api/search?${params.toString().toLowerCase()}`,
       {
@@ -20,21 +21,27 @@ async function getJobs(userQuery: any) {
     if (!res.ok) {
       throw new Error("Failed to fetch jobs");
     }
-    return res.json();
+
+    const data: unknown = await res.json();
+    const validatedJobs = jobsSchema.safeParse(data);
+
+    if (!validatedJobs.success) {
+      console.error(validatedJobs.error);
+    }
+
+    return validatedJobs.data;
   } catch (error) {
     console.error("Error fetching jobs:", error);
+    return undefined;
   }
 }
 
 export default async function ResultsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<SearchParamsType>;
 }) {
   const userQuery = await searchParams;
-
-  //dev: for testing
-  /* console.log(userQuery); */
 
   const jobs = await getJobs(userQuery);
 
@@ -45,7 +52,11 @@ export default async function ResultsPage({
           <h2>Job Results</h2>
         </div>
         <div>
-          <DisplayJobs jobs={jobs} />
+          {jobs ? (
+            <DisplayJobs jobs={jobs} />
+          ) : (
+            <p>No jobs found or error loading jobs</p>
+          )}
         </div>
       </div>
     </>

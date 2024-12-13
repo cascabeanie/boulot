@@ -1,11 +1,21 @@
-export default function DisplayJobs({ jobs }: { jobs: any }) {
+import { z } from "zod";
+import { jobsSchema } from "@/lib/zod-schemas";
+
+type JobType = z.infer<typeof jobsSchema>;
+
+type DisplayJobsProps = {
+  jobs: JobType;
+};
+
+export default function DisplayJobs({ jobs }: DisplayJobsProps) {
+  /////////////////////////
   // dev: for testing
-  //console.log(jobs.results);
+  //console.log(jobs);
 
   return (
     <>
       <div>
-        {jobs.results.map((job: any) => (
+        {jobs.results.map((job) => (
           <div key={job.jobId}>
             <ul className="flex flex-col gap-3">
               <li>
