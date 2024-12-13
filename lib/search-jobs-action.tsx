@@ -1,18 +1,15 @@
 "use server";
 
+import { StateType } from "@/lib/job-types";
+
 import { redirect } from "next/navigation";
 
-type stateType = {
-  message?: string;
-  error?: string | null;
-};
-
 export async function SearchJobsAction(
-  prevState: stateType,
+  prevState: StateType,
   formData: FormData
 ) {
-  let keywords: FormDataEntryValue | null;
-  let location: FormDataEntryValue | null;
+  let keywords;
+  let location;
 
   try {
     keywords = formData.get("keywords");

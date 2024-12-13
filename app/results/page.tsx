@@ -1,15 +1,14 @@
+import { SearchParamsType } from "@/lib/job-types";
+
 import DisplayJobs from "@/components/main/display-jobs";
 
-type queryParams = {
-  keywords: string;
-  locationName?: string;
-};
-
-async function getJobs(userQuery: any) {
-  console.log(userQuery);
+async function getJobs(userQuery: SearchParamsType): Promise<unknown> {
+  /////////////////////////
+  //dev: for testing
+  //console.log(userQuery);
 
   try {
-    const params = new URLSearchParams(userQuery);
+    const params = new URLSearchParams(userQuery as Record<string, string>);
     const res = await fetch(
       `http://localhost:3000/api/search?${params.toString().toLowerCase()}`,
       {
@@ -29,12 +28,9 @@ async function getJobs(userQuery: any) {
 export default async function ResultsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<SearchParamsType>;
 }) {
   const userQuery = await searchParams;
-
-  //dev: for testing
-  /* console.log(userQuery); */
 
   const jobs = await getJobs(userQuery);
 

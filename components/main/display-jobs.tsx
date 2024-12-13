@@ -1,11 +1,14 @@
 export default function DisplayJobs({ jobs }: { jobs: any }) {
+  /////////////////////////
   // dev: for testing
-  //console.log(jobs.results);
+  //console.log(jobs);
+
+  const results = jobs.results;
 
   return (
     <>
       <div>
-        {jobs.results.map((job: any) => (
+        {results.map((job: any) => (
           <div key={job.jobId}>
             <ul className="flex flex-col gap-3">
               <li>

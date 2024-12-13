@@ -1,20 +1,17 @@
 "use client";
 
+import { StateType } from "@/lib/job-types";
+
 import { useActionState } from "react";
 import { SearchJobsAction } from "@/lib/search-jobs-action";
 
 import { CircleAlert } from "lucide-react";
 
-type stateType = {
-  message?: string;
-  error?: string | null;
-};
-
 export default function SearchJobs() {
-  const [state, formAction, isPending] = useActionState<stateType, FormData>(
+  const [state, formAction, isPending] = useActionState<StateType, FormData>(
     SearchJobsAction,
     {
-      message: "",
+      message: null,
       error: null,
     }
   );
@@ -44,6 +41,7 @@ export default function SearchJobs() {
             {isPending ? <span>Searching...</span> : <span>Find jobs</span>}
           </button>
         </div>
+
         <div>
           {state?.error && (
             <div className="flex items-center text-xl font-light text-red-500 gap-2">
