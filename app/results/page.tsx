@@ -22,7 +22,7 @@ async function getJobs(
       throw new Error("Failed to fetch jobs");
     }
 
-    const data = await res.json();
+    const data: unknown = await res.json();
     const validatedJobs = jobsSchema.safeParse(data);
 
     if (!validatedJobs.success) {
