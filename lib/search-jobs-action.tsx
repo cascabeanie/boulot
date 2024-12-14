@@ -4,22 +4,51 @@ import { StateType } from "@/lib/job-types";
 
 import { redirect } from "next/navigation";
 
+const formNames = [
+  "keywords",
+  "locationName",
+  "minimumSalary",
+  "permanent",
+  "partTime",
+  "temp",
+];
+
 export async function SearchJobsAction(
   prevState: StateType,
   formData: FormData
 ) {
-  let keywords;
-  let location;
+  let searchParams: URLSearchParams;
 
   try {
-    keywords = formData.get("keywords");
-    location = formData.get("locationName");
+    const formValues = Object.fromEntries(
+      formNames.map((item) => [item, formData.get(item)])
+    );
 
-    if (!keywords) {
+    if (!formValues.keywords) {
       return {
         message: "Error",
         error: "At least one job keyword is required",
       };
+    }
+
+    searchParams = new URLSearchParams();
+
+    searchParams.set("keywords", formValues.keywords.toString());
+
+    if (formValues.locationName) {
+      searchParams.set("locationName", formValues.locationName.toString());
+    }
+    if (formValues.salary) {
+      searchParams.set("minimumSalary", formValues.salary.toString());
+    }
+    if (formValues.permanent) {
+      searchParams.set("permanent", formValues.permanent.toString());
+    }
+    if (formValues.partTime) {
+      searchParams.set("partTime", formValues.partTime.toString());
+    }
+    if (formValues.temp) {
+      searchParams.set("temp", formValues.temp.toString());
     }
   } catch (error) {
     return {
@@ -28,13 +57,5 @@ export async function SearchJobsAction(
     };
   }
 
-  const params = new URLSearchParams();
-
-  params.set("keywords", keywords.toString());
-
-  if (location) {
-    params.set("locationName", location.toString());
-  }
-
-  redirect(`/results?${params.toString()}`);
+  redirect(`/results?${searchParams.toString()}`);
 }
