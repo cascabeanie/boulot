@@ -11,6 +11,7 @@ async function getJobs(
 ): Promise<JobType | undefined> {
   try {
     const params = new URLSearchParams(userQuery as Record<string, string>);
+
     const res = await fetch(
       `http://localhost:3000/api/search?${params.toString().toLowerCase()}`,
       {

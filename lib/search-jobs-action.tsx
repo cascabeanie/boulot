@@ -38,8 +38,8 @@ export async function SearchJobsAction(
     if (formValues.locationName) {
       searchParams.set("locationName", formValues.locationName.toString());
     }
-    if (formValues.salary) {
-      searchParams.set("minimumSalary", formValues.salary.toString());
+    if (formValues.minimumSalary) {
+      searchParams.set("minimumSalary", formValues.minimumSalary.toString());
     }
     if (formValues.permanent) {
       searchParams.set("permanent", formValues.permanent.toString());
