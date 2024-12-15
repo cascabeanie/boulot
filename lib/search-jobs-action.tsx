@@ -50,6 +50,9 @@ export async function SearchJobsAction(
     if (formValues.temp) {
       searchParams.set("temp", formValues.temp.toString());
     }
+
+    //dev: current default
+    searchParams.set("resultsToTake", "5");
   } catch (error) {
     return {
       message: "Error",
@@ -57,5 +60,5 @@ export async function SearchJobsAction(
     };
   }
 
-  redirect(`/results?${searchParams.toString()}`);
+  redirect(`/results/1?${searchParams.toString()}`);
 }

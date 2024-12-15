@@ -4,6 +4,11 @@ import { SearchParamsType } from "@/lib/job-types";
 
 import DisplayJobs from "@/components/main/display-jobs";
 
+type ResultPageProps = {
+  searchParams: Promise<SearchParamsType>;
+  params: Promise<{ slug: string }>;
+};
+
 type JobType = z.infer<typeof jobsSchema>;
 
 async function getJobs(
@@ -39,22 +44,24 @@ async function getJobs(
 
 export default async function ResultsPage({
   searchParams,
-}: {
-  searchParams: Promise<SearchParamsType>;
-}) {
+  params,
+}: ResultPageProps) {
   const userQuery = await searchParams;
-
   const jobs = await getJobs(userQuery);
+
+  const pageNum = (await params).slug;
 
   return (
     <>
+      {/*  Button component here */}
+
       <div>
         <div>
           <h2>Job Results</h2>
         </div>
         <div>
           {jobs ? (
-            <DisplayJobs jobs={jobs} />
+            <DisplayJobs jobs={jobs} pageNum={pageNum} />
           ) : (
             <p>No jobs found or error loading jobs</p>
           )}
