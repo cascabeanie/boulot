@@ -56,8 +56,9 @@ export default async function ResultsPage({
       {/*  Button component here */}
 
       <div>
-        <div>
-          <h2>Job Results</h2>
+        <div className="flex flex-col items-center justify-center">
+          <h2 className="text-xl">Job results for: {userQuery.keywords}</h2>
+          <h3 className="text-sm">Total results: {jobs?.totalResults}</h3>
         </div>
         <div>
           {jobs ? (

@@ -2,22 +2,20 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { z } from "zod";
-import { jobsSchema } from "@/lib/zod-schemas";
-
-type JobType = z.infer<typeof jobsSchema>;
-
 type DisplayJobsProps = {
-  jobs: JobType;
+  totalResults: number;
   pageNum: string;
 };
 
-export default function Pagination({ jobs, pageNum }: DisplayJobsProps) {
+export default function Pagination({
+  totalResults,
+  pageNum,
+}: DisplayJobsProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
-  const totalPages = Math.ceil(jobs.totalResults / 5);
+  const totalPages = Math.ceil(totalResults / 5);
 
   const currentPageNum = parseInt(pageNum);
   const nextoffset = String(5 * currentPageNum);
