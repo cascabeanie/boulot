@@ -30,7 +30,7 @@ export default function FormModal({
       <dialog
         ref={modalRef}
         onCancel={closeModal}
-        className="fixed inset-0 sm:w-full sm:max-w-xl md:max-w-3xl border-2 border-zinc-900 rounded-lg p-8 z-20"
+        className="fixed inset-0 sm:w-full sm:max-w-xl md:max-w-3xl border-2 border-zinc-900 rounded-lg p-8  backdrop:bg-gray-300/80 z-20"
       >
         <div className="flex justify-end mb-6">
           <SquareX

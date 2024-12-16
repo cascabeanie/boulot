@@ -5,7 +5,7 @@ import SearchJobs from "@/components/main/home-page/search-jobs";
 export default function Home() {
   return (
     <>
-      <main className="grid grid-rows-[repeat(3,_1fr)]">
+      <main className="grid grid-rows-[repeat(3,_auto)]">
         <SearchJobs />
 
         <JobCategories />
