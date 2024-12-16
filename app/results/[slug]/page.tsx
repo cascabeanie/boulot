@@ -2,7 +2,7 @@ import { z } from "zod";
 import { jobsSchema } from "@/lib/zod-schemas";
 import { SearchParamsType } from "@/lib/job-types";
 
-import DisplayJobs from "@/components/main/display-jobs";
+import DisplayJobs from "@/components/main/results-page/display-jobs";
 
 type ResultPageProps = {
   searchParams: Promise<SearchParamsType>;

@@ -24,17 +24,20 @@ export async function SearchJobsAction(
       formNames.map((item) => [item, formData.get(item)])
     );
 
-    if (!formValues.keywords) {
+    /*   if (!formValues.keywords) {
       return {
         message: "Error",
         error: "At least one job keyword is required",
       };
-    }
+    } */
 
     searchParams = new URLSearchParams();
 
-    searchParams.set("keywords", formValues.keywords.toString());
+    /*  searchParams.set("keywords", formValues.keywords.toString()); */
 
+    if (formValues.keywords) {
+      searchParams.set("keywords", formValues.keywords.toString());
+    }
     if (formValues.locationName) {
       searchParams.set("locationName", formValues.locationName.toString());
     }

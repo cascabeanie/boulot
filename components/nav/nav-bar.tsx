@@ -8,7 +8,7 @@ export default function NavBar() {
       <nav className="flex items-center justify-between px-4 lg:px-6">
         <Link href="/" className="flex gap-2 items-center">
           <BriefcaseBusiness />
-          <h1 className="text-lg font-bold">Boulot</h1>
+          <h2 className="text-lg font-bold">Boulot</h2>
         </Link>
         <div>
           <ul>
