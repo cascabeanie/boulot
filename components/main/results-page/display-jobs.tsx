@@ -26,7 +26,7 @@ export default function DisplayJobs({ jobs, pageNum }: DisplayJobsProps) {
           {jobs.results.map((job) => (
             <div
               key={job.jobId}
-              className="border border-zinc-800 rounded-md shadow-lg p-6 lg:max-w-3xl"
+              className="border rounded-md shadow-lg p-6 lg:max-w-3xl bg-white"
             >
               <ul className="flex flex-col">
                 <li>
@@ -50,7 +50,7 @@ export default function DisplayJobs({ jobs, pageNum }: DisplayJobsProps) {
           ))}
         </div>
 
-        <div className="flex items-center justify-center mb-6">
+        <div className="flex py-4 justify-center md:justify-start">
           <Pagination totalResults={totalResults} pageNum={pageNum} />
         </div>
       </div>

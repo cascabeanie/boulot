@@ -32,10 +32,10 @@ export default function Pagination({
   }
   return (
     <>
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center ">
         <button
           disabled={currentPageNum === 1}
-          className="p-2 border rounded"
+          className="p-2 border rounded bg-white"
           onClick={previousPage}
         >
           Previous Page
@@ -45,7 +45,7 @@ export default function Pagination({
 
         <button
           disabled={currentPageNum >= totalPages}
-          className="p-2 border rounded"
+          className="p-2 border rounded bg-white"
           onClick={nextPage}
         >
           Next Page

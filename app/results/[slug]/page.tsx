@@ -55,29 +55,22 @@ export default async function ResultsPage({
 
   return (
     <>
-      <main className="grid grid-cols-1 grid-rows-[auto_auto_1fr] md:grid-cols-[1.25fr_3fr] md:grid-rows-[4rem_1fr] min-h-svh">
-        <section className="md:col-span-2 flex items-center justify-center">
+      <main className="grid grid-cols-1 grid-rows-[auto_auto_1fr] md:grid-cols-[32rem_1fr] md:grid-rows-[4rem_1fr] min-h-svh bg-gray-200/50 shadow-lg">
+        <section className="flex items-center justify-center md:justify-start p-2 md:order-2">
           <SearchBar />
         </section>
 
-        <section>
+        <section className="p-2 md:row-span-2 md:order-1">
           <Filters />
         </section>
 
-        <section className="p-2">
+        <section className="p-2  md:order-3">
           <div>
-            {/* <div className="flex flex-col items-center justify-center">
-              <h2 className="text-xl">Job results for: {userQuery.keywords}</h2>
-              <h3 className="text-sm">Total results: {jobs?.totalResults}</h3>
-            </div> */}
-
-            <div>
-              {jobs ? (
-                <DisplayJobs jobs={jobs} pageNum={pageNum} />
-              ) : (
-                <p>No jobs found or error loading jobs</p>
-              )}
-            </div>
+            {jobs ? (
+              <DisplayJobs jobs={jobs} pageNum={pageNum} />
+            ) : (
+              <p>No jobs found or error loading jobs</p>
+            )}
           </div>
         </section>
       </main>
