@@ -3,6 +3,9 @@ import { jobsSchema } from "@/lib/zod-schemas";
 
 import Pagination from "./pagination";
 
+import { MapPin } from "lucide-react";
+import { BadgePoundSterling } from "lucide-react";
+
 type JobType = z.infer<typeof jobsSchema>;
 
 type DisplayJobsProps = {
@@ -19,23 +22,28 @@ export default function DisplayJobs({ jobs, pageNum }: DisplayJobsProps) {
   return (
     <>
       <div className="flex flex-col">
-        <div className="flex flex-col gap-6 py-6">
+        <div className="flex flex-col gap-6">
           {jobs.results.map((job) => (
-            <div key={job.jobId} className="border border-green-400">
-              <ul className="flex flex-col gap-3">
+            <div
+              key={job.jobId}
+              className="border border-zinc-800 rounded-md shadow-lg p-6 lg:max-w-3xl"
+            >
+              <ul className="flex flex-col">
                 <li>
-                  <h3>{job.jobTitle}</h3>
+                  <h3 className="text-xl font-semibold mb-2">{job.jobTitle}</h3>
                 </li>
                 <li>
-                  <p>{job.employerName}</p>
+                  <p className="text-gray-600 mb-2">{job.employerName}</p>
                 </li>
-                <li>
+                <li className="flex items-center text-gray-500 mb-2 gap-1">
+                  <MapPin size={18} />
                   <p>{job.locationName}</p>
                 </li>
-                <li>
-                  <p>
+                <li className="flex items-center text-gray-500 gap-1">
+                  <BadgePoundSterling size={18} />
+                  <span>
                     £ {job.minimumSalary} - £ {job.maximumSalary}
-                  </p>
+                  </span>
                 </li>
               </ul>
             </div>

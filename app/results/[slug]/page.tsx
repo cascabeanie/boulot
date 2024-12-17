@@ -3,6 +3,8 @@ import { jobsSchema } from "@/lib/zod-schemas";
 import { SearchParamsType } from "@/lib/job-types";
 
 import DisplayJobs from "@/components/main/results-page/display-jobs";
+import Filters from "@/components/main/results-page/filters";
+import SearchBar from "@/components/main/results-page/search-bar";
 
 type ResultPageProps = {
   searchParams: Promise<SearchParamsType>;
@@ -53,21 +55,32 @@ export default async function ResultsPage({
 
   return (
     <>
-      {/*  Button component here */}
+      <main className="grid grid-cols-1 grid-rows-[auto_auto_1fr] md:grid-cols-[1.25fr_3fr] md:grid-rows-[4rem_1fr] min-h-svh">
+        <section className="md:col-span-2 flex items-center justify-center">
+          <SearchBar />
+        </section>
 
-      <div>
-        <div className="flex flex-col items-center justify-center">
-          <h2 className="text-xl">Job results for: {userQuery.keywords}</h2>
-          <h3 className="text-sm">Total results: {jobs?.totalResults}</h3>
-        </div>
-        <div>
-          {jobs ? (
-            <DisplayJobs jobs={jobs} pageNum={pageNum} />
-          ) : (
-            <p>No jobs found or error loading jobs</p>
-          )}
-        </div>
-      </div>
+        <section>
+          <Filters />
+        </section>
+
+        <section className="p-2">
+          <div>
+            {/* <div className="flex flex-col items-center justify-center">
+              <h2 className="text-xl">Job results for: {userQuery.keywords}</h2>
+              <h3 className="text-sm">Total results: {jobs?.totalResults}</h3>
+            </div> */}
+
+            <div>
+              {jobs ? (
+                <DisplayJobs jobs={jobs} pageNum={pageNum} />
+              ) : (
+                <p>No jobs found or error loading jobs</p>
+              )}
+            </div>
+          </div>
+        </section>
+      </main>
     </>
   );
 }
