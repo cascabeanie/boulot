@@ -6,10 +6,11 @@ import { SearchJobsAction } from "@/lib/search-jobs-action";
 
 import TextInput from "@/components/ui/inputs/text-input";
 import SubmitButton from "@/components/ui/buttons/submit-button";
+import Filters from "@/components/main/results-page/filters";
 
 import { CircleAlert } from "lucide-react";
 
-export default function SearchBar() {
+export default function ResultsSearch() {
   const [state, formAction, isPending] = useActionState<StateType, FormData>(
     SearchJobsAction,
     {
@@ -22,20 +23,26 @@ export default function SearchBar() {
     <>
       <form
         action={formAction}
-        className="flex flex-col items-center gap-3 sm:flex-row sm:gap-2"
+        className="flex flex-col gap-8 lg:gap-10 w-full items-center"
       >
-        <TextInput
-          name="keywords"
-          placeholder="Search job keywords"
-          required={false}
-        />
-        <TextInput
-          name="locationName"
-          placeholder="Town or city"
-          required={false}
-        />
+        <div className="flex flex-col items-center gap-3 lg:flex-row sm:gap-2">
+          <TextInput
+            name="keywords"
+            placeholder="Search job keywords"
+            required={false}
+          />
+          <TextInput
+            name="locationName"
+            placeholder="Town or city"
+            required={false}
+          />
 
-        <SubmitButton isPending={isPending}>Find Jobs</SubmitButton>
+          <SubmitButton isPending={isPending}>Find Jobs</SubmitButton>
+        </div>
+
+        <div className="flex justify-center w-full">
+          <Filters />
+        </div>
       </form>
 
       <div>

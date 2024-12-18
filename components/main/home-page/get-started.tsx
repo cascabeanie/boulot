@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function GetStarted() {
   return (
     <>
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white">
+      <section className="flex justify-center w-full py-12 md:py-24 lg:py-32 bg-zinc-900 text-white">
         <div className="container flex flex-col items-center px-4 md:px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
             Start Your Job Search Today

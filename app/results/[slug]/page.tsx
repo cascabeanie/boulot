@@ -3,8 +3,8 @@ import { jobsSchema } from "@/lib/zod-schemas";
 import { SearchParamsType } from "@/lib/job-types";
 
 import DisplayJobs from "@/components/main/results-page/display-jobs";
-import Filters from "@/components/main/results-page/filters";
-import SearchBar from "@/components/main/results-page/search-bar";
+
+import SideBar from "@/components/side-bar/side-bar";
 
 type ResultPageProps = {
   searchParams: Promise<SearchParamsType>;
@@ -55,23 +55,15 @@ export default async function ResultsPage({
 
   return (
     <>
-      <main className="grid grid-cols-1 grid-rows-[auto_auto_1fr] md:grid-cols-[32rem_1fr] md:grid-rows-[4rem_1fr] min-h-svh bg-gray-200/50 shadow-lg">
-        <section className="flex items-center justify-center md:justify-start p-2 md:order-2">
-          <SearchBar />
-        </section>
+      <SideBar />
 
-        <section className="p-2 md:row-span-2 md:order-1">
-          <Filters />
-        </section>
-
-        <section className="p-2  md:order-3">
-          <div>
-            {jobs ? (
-              <DisplayJobs jobs={jobs} pageNum={pageNum} />
-            ) : (
-              <p>No jobs found or error loading jobs</p>
-            )}
-          </div>
+      <main className="bg-gray-200/50 shadow-lg flex flex-col justify-center">
+        <section className="p-4">
+          {jobs ? (
+            <DisplayJobs jobs={jobs} pageNum={pageNum} />
+          ) : (
+            <p>No jobs found or error loading jobs</p>
+          )}
         </section>
       </main>
     </>
