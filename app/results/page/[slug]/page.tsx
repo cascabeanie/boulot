@@ -8,7 +8,6 @@ import SideBar from "@/components/side-bar/side-bar";
 
 type ResultPageProps = {
   searchParams: Promise<SearchParamsType>;
-  params: Promise<{ slug: string }>;
 };
 
 type JobType = z.infer<typeof jobsSchema>;
@@ -44,14 +43,14 @@ async function getJobs(
   }
 }
 
-export default async function ResultsPage({
-  searchParams,
-  params,
-}: ResultPageProps) {
+export default async function ResultsPage({ searchParams }: ResultPageProps) {
   const userQuery = await searchParams;
   const jobs = await getJobs(userQuery);
 
-  const pageNum = (await params).slug;
+  /////////////////////////////
+  // dev: for testing loading
+  //await new Promise((resolve) => setTimeout(resolve, 2000));
+  /////////////////////////////
 
   return (
     <>
@@ -60,7 +59,7 @@ export default async function ResultsPage({
       <main className="bg-gray-200/50 shadow-lg flex flex-col justify-center">
         <section className="p-4">
           {jobs ? (
-            <DisplayJobs jobs={jobs} pageNum={pageNum} />
+            <DisplayJobs jobs={jobs} />
           ) : (
             <p>No jobs found or error loading jobs</p>
           )}

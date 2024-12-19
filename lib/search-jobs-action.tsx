@@ -63,5 +63,5 @@ export async function SearchJobsAction(
     };
   }
 
-  redirect(`/results/1?${searchParams.toString()}`);
+  redirect(`/results/page/1?${searchParams.toString()}`);
 }

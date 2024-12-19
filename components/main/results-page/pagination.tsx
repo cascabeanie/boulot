@@ -1,35 +1,35 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, useParams } from "next/navigation";
 
-type DisplayJobsProps = {
+type PaginationProps = {
   totalResults: number;
-  pageNum: string;
 };
 
-export default function Pagination({
-  totalResults,
-  pageNum,
-}: DisplayJobsProps) {
+export default function Pagination({ totalResults }: PaginationProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
+
+  const { slug } = useParams<{ slug: string }>();
+  const currentPageNum = Number(slug);
 
   const totalPages = Math.ceil(totalResults / 5);
 
-  const currentPageNum = parseInt(pageNum);
   const nextoffset = String(5 * currentPageNum);
   const prevoffset = String(5 * (currentPageNum - 2));
 
+  const params = new URLSearchParams(searchParams);
+
   function nextPage() {
     params.set("resultsToSkip", nextoffset);
-    router.push(`/results/${currentPageNum + 1}?${params}`);
+    router.push(`${(currentPageNum + 1).toString()}?${params}`);
   }
 
   function previousPage() {
     params.set("resultsToSkip", prevoffset);
-    router.push(`/results/${currentPageNum - 1}?${params}`);
+    router.push(`${(currentPageNum - 1).toString()}?${params}`);
   }
+
   return (
     <>
       <div className="flex gap-2 items-center">

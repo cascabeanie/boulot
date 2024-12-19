@@ -23,7 +23,7 @@ export default function ResultsSearch() {
   return (
     <>
       <Form
-        action="/results/1?"
+        action="/results/page/1?"
         className="flex flex-col gap-8 lg:gap-10 w-full items-center"
       >
         <div className="flex flex-col items-center gap-3 lg:flex-row sm:gap-2">

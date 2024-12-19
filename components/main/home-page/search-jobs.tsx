@@ -21,10 +21,7 @@ export default function SearchJobs() {
 
   return (
     <>
-      <section
-        id="home"
-        className="flex justify-center py-12 md:py-24 lg:py-32 xl:py-48"
-      >
+      <section className="flex justify-center py-12 md:py-24 lg:py-32 xl:py-48">
         <div className="flex flex-col items-center gap-4 container px-4 md:px-6">
           <div className="flex flex-col items-center text-center gap-2">
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">

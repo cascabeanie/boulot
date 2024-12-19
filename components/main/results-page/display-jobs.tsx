@@ -10,10 +10,9 @@ type JobType = z.infer<typeof jobsSchema>;
 
 type DisplayJobsProps = {
   jobs: JobType;
-  pageNum: string;
 };
 
-export default function DisplayJobs({ jobs, pageNum }: DisplayJobsProps) {
+export default function DisplayJobs({ jobs }: DisplayJobsProps) {
   /////////////////////////
   // dev: for testing
   //console.log(jobs);
@@ -51,7 +50,7 @@ export default function DisplayJobs({ jobs, pageNum }: DisplayJobsProps) {
         </div>
 
         <div className="flex justify-center">
-          <Pagination totalResults={totalResults} pageNum={pageNum} />
+          <Pagination totalResults={totalResults} />
         </div>
       </div>
     </>
