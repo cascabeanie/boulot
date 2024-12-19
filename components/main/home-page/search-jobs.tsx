@@ -11,7 +11,7 @@ import SubmitButton from "@/components/ui/buttons/submit-button";
 import SearchFilters from "./search-filters";
 
 export default function SearchJobs() {
-  const [state, formAction, isPending] = useActionState<StateType, FormData>(
+  const [state, formAction] = useActionState<StateType, FormData>(
     SearchJobsAction,
     {
       message: null,
@@ -50,9 +50,9 @@ export default function SearchJobs() {
                   required={false}
                 />
 
-                <SearchFilters isPending={isPending} />
+                <SearchFilters />
 
-                <SubmitButton isPending={isPending}>Find Jobs</SubmitButton>
+                <SubmitButton>Find Jobs</SubmitButton>
               </div>
             </form>
 
