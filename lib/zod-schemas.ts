@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const resultSchema = z.object({
+export const resultSchema = z.object({
   applications: z.number().or(z.null()),
   currency: z.string().or(z.null()),
   date: z.string().or(z.null()),
@@ -12,7 +12,7 @@ const resultSchema = z.object({
   jobDescription: z.string().or(z.null()),
   jobId: z.number().or(z.null()),
   jobTitle: z.string().or(z.null()),
-  jobUrl: z.string().or(z.null()),
+  jobUrl: z.string().url().or(z.null()),
   locationName: z.string().or(z.null()),
   maximumSalary: z.number().or(z.null()),
   minimumSalary: z.number().or(z.null()),

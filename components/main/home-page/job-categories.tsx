@@ -59,7 +59,7 @@ export default function JobCategories() {
                 className="bg-white hover:shadow-lg transition-shadow duration-300 cursor-pointer rounded-lg border md:max-w-md w-full group"
                 onClick={() => {
                   router.push(
-                    `/results/1?keywords=${category.title}&resultsToTake=5`
+                    `/results/page/1?keywords=${category.title}&resultsToTake=5`
                   );
                 }}
               >

@@ -5,15 +5,17 @@ import SkeletonCard from "@/components/ui/skeleton-loaders/skeleton-card";
 export default function ResultsSkeleton() {
   return (
     <>
-      <span className="fixed flex items-center justify-center h-10 w-10 rounded-md z-10 top-2 right-5 bg-white border">
-        <LoaderCircle
-          size={30}
-          stroke="rgb(229 231 235 / .8)"
-          className="animate-spin"
-        />
-      </span>
-
       <section className="bg-gray-200/50 shadow-lg flex flex-col justify-center p-4">
+        <div>
+          <span className="fixed flex items-center justify-center h-10 w-10 rounded-md z-10 top-2 right-5 bg-white border">
+            <LoaderCircle
+              size={30}
+              stroke="rgb(229 231 235 / .8)"
+              className="animate-spin"
+            />
+          </span>
+        </div>
+
         <div className="flex flex-col gap-6">
           <SkeletonCard />
           <SkeletonCard />
