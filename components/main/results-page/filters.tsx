@@ -1,9 +1,9 @@
 export default function Filters() {
   return (
     <>
-      <div className="flex flex-col justify-center gap-4 border rounded-md shadow-lg p-4 sm:p-8 bg-white w-full max-w-md sm:max-w-xl">
+      <div className="flex w-full max-w-md flex-col justify-center gap-4 rounded-md border bg-white p-4 shadow-lg sm:max-w-xl sm:p-8">
         <div className="flex flex-col gap-1">
-          <h2 className="text-xl font-bold mb-2">Filters</h2>
+          <h2 className="mb-2 text-xl font-bold">Filters</h2>
 
           <h3 className="text-lg font-medium">Job Type</h3>
 
@@ -13,7 +13,7 @@ export default function Filters() {
               value={"true"}
               id="permanent-checkBox"
               name="permanent"
-              className="accent-zinc-900 cursor-pointer"
+              className="cursor-pointer accent-zinc-900"
             />
             <label
               htmlFor="permanent-checkBox"
@@ -29,7 +29,7 @@ export default function Filters() {
               value={"true"}
               id="part-time-checkBox"
               name="partTime"
-              className="accent-zinc-900 cursor-pointer"
+              className="cursor-pointer accent-zinc-900"
             />
             <label
               htmlFor="part-time-checkBox"
@@ -45,7 +45,7 @@ export default function Filters() {
               value={"true"}
               id="temp-checkBox"
               name="temp"
-              className="accent-zinc-900 cursor-pointer"
+              className="cursor-pointer accent-zinc-900"
             />
             <label htmlFor="temp-checkBox" className="text-sm text-zinc-900">
               Temp position
@@ -60,7 +60,7 @@ export default function Filters() {
             <select
               name="minimumSalary"
               id="min-salary"
-              className="bg-zinc-100 rounded-sm cursor-pointer pl-1"
+              className="cursor-pointer rounded-sm bg-zinc-100 pl-1"
             >
               <option value="">Any amount</option>
               <option value="20000">£20,000+</option>

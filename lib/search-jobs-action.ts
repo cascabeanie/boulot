@@ -15,13 +15,13 @@ const formNames = [
 
 export async function SearchJobsAction(
   prevState: StateType,
-  formData: FormData
+  formData: FormData,
 ) {
   let searchParams: URLSearchParams;
 
   try {
     const formValues = Object.fromEntries(
-      formNames.map((item) => [item, formData.get(item)])
+      formNames.map((item) => [item, formData.get(item)]),
     );
 
     searchParams = new URLSearchParams();

@@ -23,9 +23,6 @@ export default function DisplayJobs({ jobs }: DisplayJobsProps) {
   const [selectedJob, setSelectedJob] = useState<ResultType | null>(null);
   const [modalVisibility, setModalVisibility] = useState(false);
 
-  /////////////////////////
-  // dev: for testing
-  //console.log(jobs);
   const totalResults = jobs.totalResults;
 
   return (
@@ -47,7 +44,7 @@ export default function DisplayJobs({ jobs }: DisplayJobsProps) {
             {jobs.results.map((job) => (
               <div
                 key={job.jobId}
-                className="border rounded-md shadow-lg p-6 xl:p-8 bg-white cursor-pointer hover:animate-pulse"
+                className="cursor-pointer rounded-md border bg-white p-6 shadow-lg hover:animate-pulse xl:p-8"
                 onClick={() => {
                   setSelectedJob(job);
                   setModalVisibility(true);
@@ -55,18 +52,18 @@ export default function DisplayJobs({ jobs }: DisplayJobsProps) {
               >
                 <ul className="flex flex-col">
                   <li>
-                    <h3 className="text-xl font-semibold mb-2">
+                    <h3 className="mb-2 text-xl font-semibold">
                       {job.jobTitle}
                     </h3>
                   </li>
                   <li>
-                    <p className="text-gray-600 mb-2">{job.employerName}</p>
+                    <p className="mb-2 text-gray-600">{job.employerName}</p>
                   </li>
-                  <li className="flex items-center text-gray-500 mb-2 gap-1">
+                  <li className="mb-2 flex items-center gap-1 text-gray-500">
                     <MapPin size={18} />
                     <p>{job.locationName}</p>
                   </li>
-                  <li className="flex items-center text-gray-500 gap-1">
+                  <li className="flex items-center gap-1 text-gray-500">
                     <BadgePoundSterling size={18} />
                     <span>
                       £ {job.minimumSalary} - £ {job.maximumSalary}

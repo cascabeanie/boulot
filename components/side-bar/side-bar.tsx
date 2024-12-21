@@ -19,10 +19,10 @@ export default function SideBar() {
       <aside
         className={`fixed ${
           isSideOpen === false ? "-right-full" : "right-0"
-        } transition-all bg-white border min-h-svh w-full sm:w-3/4 xl:w-1/2 p-4 sm:p-8 z-50`}
+        } z-50 min-h-svh w-full border bg-white p-4 transition-all sm:w-3/4 sm:p-8 xl:w-1/2`}
       >
-        <div className="flex justify-center mt-5">
-          <span className="fixed flex items-center justify-center h-10 w-10 rounded-md z-10 top-2 right-5 bg-white border">
+        <div className="mt-5 flex justify-center">
+          <span className="fixed right-5 top-2 z-10 flex h-10 w-10 items-center justify-center rounded-md border bg-white">
             {isSideOpen === false ? (
               <PanelRightOpen size={30} onClick={sideBarHandler} />
             ) : (

@@ -7,7 +7,7 @@ export default function PrimaryButton({ children }: PrimaryButtonProps) {
     <>
       <button
         type="button"
-        className="bg-white text-zinc-900 rounded-lg py-3 px-4 shadow-white hover:bg-zinc-300 text-sm font-medium"
+        className="rounded-lg bg-white px-4 py-3 text-sm font-medium text-zinc-900 shadow-white hover:bg-zinc-300"
       >
         {children}
       </button>

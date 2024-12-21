@@ -14,7 +14,7 @@ export default function SubmitButton({ children }: SubmitButtonProps) {
     <>
       <button
         type="submit"
-        className="bg-zinc-900 text-white border rounded-lg py-2 px-2 shadow hover:bg-zinc-800 text-sm"
+        className="rounded-lg border bg-zinc-900 px-2 py-2 text-sm text-white shadow hover:bg-zinc-800"
       >
         {pending ? (
           <span className="flex items-center gap-1">

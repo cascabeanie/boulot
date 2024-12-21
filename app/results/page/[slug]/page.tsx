@@ -13,7 +13,7 @@ type ResultPageProps = {
 type JobType = z.infer<typeof jobsSchema>;
 
 async function getJobs(
-  userQuery: SearchParamsType
+  userQuery: SearchParamsType,
 ): Promise<JobType | undefined> {
   try {
     const params = new URLSearchParams(userQuery as Record<string, string>);
@@ -22,7 +22,7 @@ async function getJobs(
       `http://localhost:3000/api/search?${params.toString().toLowerCase()}`,
       {
         method: "GET",
-      }
+      },
     );
 
     if (!res.ok) {
@@ -47,16 +47,11 @@ export default async function ResultsPage({ searchParams }: ResultPageProps) {
   const userQuery = await searchParams;
   const jobs = await getJobs(userQuery);
 
-  /////////////////////////////
-  // dev: for testing loading
-  //await new Promise((resolve) => setTimeout(resolve, 3000));
-  /////////////////////////////
-
   return (
     <>
       <SideBar />
 
-      <main className="bg-gray-200/50 shadow-lg flex flex-col justify-center">
+      <main className="flex flex-col justify-center bg-gray-200/50 shadow-lg">
         <section className="p-4">
           {jobs ? (
             <DisplayJobs jobs={jobs} />

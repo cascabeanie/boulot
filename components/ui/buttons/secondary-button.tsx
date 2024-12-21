@@ -7,7 +7,7 @@ export default function SecondaryButton({ children }: SecondaryButtonProps) {
     <>
       <button
         type="button"
-        className="bg-zinc-900 text-white rounded-lg py-3 px-4 shadow-zinc-900 hover:bg-zinc-700 text-sm font-medium"
+        className="rounded-lg bg-zinc-900 px-4 py-3 text-sm font-medium text-white shadow-zinc-900 hover:bg-zinc-700"
       >
         {children}
       </button>

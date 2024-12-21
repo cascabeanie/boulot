@@ -47,28 +47,28 @@ export default function JobCategories() {
 
   return (
     <>
-      <section className="flex justify-center py-12 md:py-24 lg:py-32 bg-gray-200/50 w-full">
+      <section className="flex w-full justify-center bg-gray-200/50 py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
+          <h2 className="mb-12 text-center text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Job Categories
           </h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-items-center w-full">
+          <div className="grid w-full justify-items-center gap-6 md:grid-cols-2 lg:grid-cols-3">
             {categories.map((category) => (
               <div
                 key={category.id}
-                className="bg-white hover:shadow-lg transition-shadow duration-300 cursor-pointer rounded-lg border md:max-w-md w-full group"
+                className="group w-full cursor-pointer rounded-lg border bg-white transition-shadow duration-300 hover:shadow-lg md:max-w-md"
                 onClick={() => {
                   router.push(
-                    `/results/page/1?keywords=${category.title}&resultsToTake=5`
+                    `/results/page/1?keywords=${category.title}&resultsToTake=5`,
                   );
                 }}
               >
-                <div className="p-6 flex flex-col items-center text-center">
-                  <span className="w-16 h-16 bg-gray-300/50 rounded-full flex items-center justify-center mb-4 transition-colors group-hover:bg-gray-300 hover:animate-pulse">
+                <div className="flex flex-col items-center p-6 text-center">
+                  <span className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-300/50 transition-colors hover:animate-pulse group-hover:bg-gray-300">
                     {category.icon}
                   </span>
-                  <h3 className="text-lg font-bold mb-2">{category.title}</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="mb-2 text-lg font-bold">{category.title}</h3>
+                  <p className="text-muted-foreground text-sm">
                     Explore jobs in {category.title.toLowerCase()}
                   </p>
                 </div>

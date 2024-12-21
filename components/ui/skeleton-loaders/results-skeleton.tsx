@@ -5,9 +5,9 @@ import SkeletonCard from "@/components/ui/skeleton-loaders/skeleton-card";
 export default function ResultsSkeleton() {
   return (
     <>
-      <section className="bg-gray-200/50 shadow-lg flex flex-col justify-center p-4">
+      <section className="flex flex-col justify-center bg-gray-200/50 p-4 shadow-lg">
         <div>
-          <span className="fixed flex items-center justify-center h-10 w-10 rounded-md z-10 top-2 right-5 bg-white border">
+          <span className="fixed right-5 top-2 z-10 flex h-10 w-10 items-center justify-center rounded-md border bg-white">
             <LoaderCircle
               size={30}
               stroke="rgb(229 231 235 / .8)"
@@ -23,15 +23,15 @@ export default function ResultsSkeleton() {
           <SkeletonCard />
           <SkeletonCard />
 
-          <div className="flex justify-center gap-2 items-center">
-            <div className="flex items-center justify-center border rounded bg-white min-w-24 min-h-10">
-              <span className="w-12 h-3 bg-gray-300/50 rounded-2xl animate-pulse" />
+          <div className="flex items-center justify-center gap-2">
+            <div className="flex min-h-10 min-w-24 items-center justify-center rounded border bg-white">
+              <span className="h-3 w-12 animate-pulse rounded-2xl bg-gray-300/50" />
             </div>
 
-            <span className="w-3 h-5 bg-gray-300/50 rounded-2xl animate-pulse"></span>
+            <span className="h-5 w-3 animate-pulse rounded-2xl bg-gray-300/50"></span>
 
-            <div className="flex items-center justify-center border rounded bg-white min-w-24 min-h-10">
-              <span className="w-12 h-3 bg-gray-300/50 rounded-2xl animate-pulse" />
+            <div className="flex min-h-10 min-w-24 items-center justify-center rounded border bg-white">
+              <span className="h-3 w-12 animate-pulse rounded-2xl bg-gray-300/50" />
             </div>
           </div>
         </div>

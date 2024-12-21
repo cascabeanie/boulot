@@ -30,7 +30,7 @@ export default function FormModal({
       <dialog
         ref={modalRef}
         onCancel={closeModal}
-        className="fixed inset-0 sm:w-full sm:max-w-xl md:max-w-3xl border-2 border-zinc-900 rounded-lg p-8 backdrop:bg-gray-300/80 gap-8"
+        className="fixed inset-0 gap-8 rounded-lg border-2 border-zinc-900 p-8 backdrop:bg-gray-300/80 sm:w-full sm:max-w-xl md:max-w-3xl"
       >
         <div className="flex justify-end">
           <SquareX
@@ -41,7 +41,7 @@ export default function FormModal({
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <h2 className="text-xl font-bold mb-2">Filters</h2>
+            <h2 className="mb-2 text-xl font-bold">Filters</h2>
 
             <h3 className="text-lg font-medium">Job Type</h3>
 
@@ -51,7 +51,7 @@ export default function FormModal({
                 value={"true"}
                 id="permanent-checkBox"
                 name="permanent"
-                className="accent-zinc-900 cursor-pointer"
+                className="cursor-pointer accent-zinc-900"
               />
               <label
                 htmlFor="permanent-checkBox"
@@ -67,7 +67,7 @@ export default function FormModal({
                 value={"true"}
                 id="part-time-checkBox"
                 name="partTime"
-                className="accent-zinc-900 cursor-pointer"
+                className="cursor-pointer accent-zinc-900"
               />
               <label
                 htmlFor="part-time-checkBox"
@@ -83,7 +83,7 @@ export default function FormModal({
                 value={"true"}
                 id="temp-checkBox"
                 name="temp"
-                className="accent-zinc-900 cursor-pointer"
+                className="cursor-pointer accent-zinc-900"
               />
               <label htmlFor="temp-checkBox" className="text-sm text-zinc-900">
                 Temp position
@@ -98,7 +98,7 @@ export default function FormModal({
               <select
                 name="minimumSalary"
                 id="min-salary"
-                className="bg-zinc-100 rounded-sm cursor-pointer pl-1"
+                className="cursor-pointer rounded-sm bg-zinc-100 pl-1"
               >
                 <option value="">Any amount</option>
                 <option value="20000">£20,000+</option>
@@ -115,7 +115,7 @@ export default function FormModal({
             </span>
           </div>
 
-          <div className="flex justify-center mt-4">{children}</div>
+          <div className="mt-4 flex justify-center">{children}</div>
         </div>
       </dialog>
     </>
