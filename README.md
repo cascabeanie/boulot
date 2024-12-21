@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Boulot
+
+Boulot is a web app that helps users search for jobs across the UK using [Reed's API](https://www.reed.co.uk/developers/Jobseeker). It offers filters for location, industry, salary, and job type, making it easy to find roles that match your preferences. With a simple interface, users can explore openings and access application details quickly.
 
 ## Getting Started
 
-First, run the development server:
+If you want to run this app locally, follow these instructions:
+
+To run the development server:
 
 ```bash
+npm install
+
+# then
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Getting an API key
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Obtain an API key from [here](https://www.reed.co.uk/developers/Jobseeker) to search for jobs.
 
-## Learn More
+Then, make an .env.local file in the app's root directory with the following inside:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+REED_API_KEY="YOUR API KEY GOES HERE WITHOUT THE QUOTES"
+```
