@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased grid grid-rows-[minmax(3.5rem,_auto)_1fr_minmax(3.5rem,_auto)] min-h-svh`}
+        className={`${geistSans.variable} ${geistMono.variable} grid min-h-svh grid-rows-[minmax(3.5rem,_auto)_1fr_minmax(3.5rem,_auto)] antialiased`}
       >
         <NavBar />
 

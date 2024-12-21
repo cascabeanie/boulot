@@ -1,5 +1,7 @@
 "use client";
 
+import { RESULTS_PER_PAGE } from "@/lib/constants";
+
 import { useRouter, useSearchParams, useParams } from "next/navigation";
 
 type PaginationProps = {
@@ -13,10 +15,10 @@ export default function Pagination({ totalResults }: PaginationProps) {
   const { slug } = useParams<{ slug: string }>();
   const currentPageNum = Number(slug);
 
-  const totalPages = Math.ceil(totalResults / 5);
+  const totalPages = Math.ceil(totalResults / RESULTS_PER_PAGE);
 
-  const nextoffset = String(5 * currentPageNum);
-  const prevoffset = String(5 * (currentPageNum - 2));
+  const nextoffset = String(RESULTS_PER_PAGE * currentPageNum);
+  const prevoffset = String(RESULTS_PER_PAGE * (currentPageNum - 2));
 
   const params = new URLSearchParams(searchParams);
 
@@ -32,10 +34,10 @@ export default function Pagination({ totalResults }: PaginationProps) {
 
   return (
     <>
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <button
           disabled={currentPageNum === 1}
-          className="p-2 border rounded bg-white min-w-24"
+          className="min-w-24 rounded border bg-white p-2"
           onClick={previousPage}
         >
           Prev Page
@@ -45,7 +47,7 @@ export default function Pagination({ totalResults }: PaginationProps) {
 
         <button
           disabled={currentPageNum >= totalPages}
-          className="p-2 border rounded bg-white min-w-24"
+          className="min-w-24 rounded border bg-white p-2"
           onClick={nextPage}
         >
           Next Page

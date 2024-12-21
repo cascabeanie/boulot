@@ -1,8 +1,8 @@
 "use server";
 
-import { StateType } from "@/lib/job-types";
+import { RESULTS_PER_PAGE } from "./constants";
 
-import { redirect } from "next/navigation";
+import { StateType } from "@/lib/job-types";
 
 const formNames = [
   "keywords",
@@ -24,16 +24,7 @@ export async function SearchJobsAction(
       formNames.map((item) => [item, formData.get(item)])
     );
 
-    /*   if (!formValues.keywords) {
-      return {
-        message: "Error",
-        error: "At least one job keyword is required",
-      };
-    } */
-
     searchParams = new URLSearchParams();
-
-    /*  searchParams.set("keywords", formValues.keywords.toString()); */
 
     if (formValues.keywords) {
       searchParams.set("keywords", formValues.keywords.toString());
@@ -54,14 +45,18 @@ export async function SearchJobsAction(
       searchParams.set("temp", formValues.temp.toString());
     }
 
-    //dev: current default
-    searchParams.set("resultsToTake", "5");
+    searchParams.set("resultsToTake", RESULTS_PER_PAGE.toString());
+
+    return {
+      message: null,
+      error: null,
+      data: searchParams.toString(),
+    };
   } catch (error) {
     return {
       message: "Error",
       error: `Failed to process search`,
+      data: null,
     };
   }
-
-  redirect(`/results/page/1?${searchParams.toString()}`);
 }

@@ -5,7 +5,7 @@ export async function GET(req: NextRequest) {
   if (!apiKey) {
     return NextResponse.json(
       { error: "API key not configured" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 
@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       { error: "Internal server error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
