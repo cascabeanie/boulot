@@ -19,7 +19,7 @@ async function getJobs(
     const params = new URLSearchParams(userQuery as Record<string, string>);
 
     const res = await fetch(
-      `http://localhost:3000/api/search?${params.toString().toLowerCase()}`,
+      `${process.env.BASE_URL}/api/search?${params.toString().toLowerCase()}`,
       {
         method: "GET",
       },
