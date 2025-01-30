@@ -31,7 +31,7 @@ Obtain an API key from [here](https://www.reed.co.uk/developers/Jobseeker) to se
 To run this project, you will need to add the following environment variables to your .env.local file
 
 ```bash
-REED_API_KEY="YOUR API KEY GOES HERE WITHOUT THE QUOTES"
+REED_API_KEY="YOUR API KEY GOES HERE"
 
 BASE_URL=http://localhost:3000
 ```
